@@ -25,6 +25,12 @@ export const Root = styled('div', props => {
   };
 });
 
+export const FocusContainer = styled('div', props => {
+  return {
+    outline: 'none',
+  };
+});
+
 export const Input = styled('input', props => {
   const {$theme} = props;
   const {

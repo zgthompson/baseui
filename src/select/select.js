@@ -16,6 +16,7 @@ import {
   SingleSelection as StyledSingleSelection,
   SelectComponentIcon as StyledSelectComponentIcon,
   SelectionContainer as StyledSelectionContainer,
+  FocusContainer as StyledFocusContainer,
 } from './styled-components';
 
 import {Input as InputComponent} from '../input';
@@ -217,9 +218,11 @@ class Select extends React.Component<PropsT, StatelessStateT> {
               ? this.openDropDown()
               : this.setState({isDropDownOpen: newValue});
           },
+          onFocus: e => this.props.onFocus(e),
+          onBlur: e => this.props.onBlur(e),
         };
     return (
-      <div tabIndex={this.props.tabIndex} {...events}>
+      <StyledFocusContainer tabIndex={this.props.tabIndex} {...events}>
         <InputComponent
           disabled={true}
           placeholder={!selectedOptions.length ? placeholder : ''}
@@ -248,7 +251,7 @@ class Select extends React.Component<PropsT, StatelessStateT> {
             Before: () => this.getMultipleSelections(),
           }}
         />
-      </div>
+      </StyledFocusContainer>
     );
   }
 
